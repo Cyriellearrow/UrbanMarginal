@@ -1,3 +1,6 @@
+package modele;
+
+
 import java.util.ArrayList;
 
 /**
