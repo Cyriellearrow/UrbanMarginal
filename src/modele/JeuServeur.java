@@ -1,14 +1,19 @@
 package modele;
 
-
+import Controleur.Controle;
+import Controleur.Global;
 import java.util.ArrayList;
+import java.util.Hashtable;
+
+import outils.connexion.Connection;
 
 /**
  * Gestion du jeu côté serveur
  *
  */
-public class JeuServeur extends Jeu {
+public class JeuServeur  extends Jeu implements Global{
 
+	private Controle controle;
 	/**
 	 * Collection de murs
 	 */
@@ -16,20 +21,31 @@ public class JeuServeur extends Jeu {
 	/**
 	 * Collection de joueurs
 	 */
-	private ArrayList<Joueur> lesJoueurs = new ArrayList<Joueur>() ;
+	private Hashtable<Connection, Joueur> lesJoueurs = new Hashtable<Connection,Joueur>() ;
 	
 	/**
 	 * Constructeur
 	 */
-	public JeuServeur() {
+	public JeuServeur(Controle controle) {
+		super.controle = controle;
 	}
 	
 	@Override
-	public void connexion() {
+	public void connexion(Connection connection) {
+		this.lesJoueurs.put(connection, new Joueur());
 	}
 
 	@Override
-	public void reception() {
+	public void reception(Connection connection, Object info) {
+		String[] message = ((String)info).split(SEPARATOR);
+		
+		switch (message[0]) {
+			case PSEUDO:
+				String Pseudo = message[1];
+				Integer numPerso = Integer.parseInt(message[2]);
+				this.lesJoueurs.get(connection).initPerso(Pseudo, numPerso);
+				break;
+		}
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package Vue;
 
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,32 +11,27 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import Controleur.Controle;
+import Controleur.Global;
 
-public class EntreeJeu extends JFrame {
+public class EntreeJeu extends JFrame implements Global {
 
 	private static final long serialVersionUID = 1L;
 	private Arene frmArene;
 	private ChoixJoueur frmChoixJoueur;
 	private JPanel contentPane;
 	private JTextField txtIp;
+	private Controle controle;
 	
 	private void btnExit_clic() {
 		System.exit(0);
 	}
 	
 	private void btnConnect_clic() {
-		
-		this.frmChoixJoueur = new ChoixJoueur ();
-		this.frmChoixJoueur.setVisible(true);
-		this.dispose();
-		
+		this.controle.evenementEntreeJeu(txtIp.getText().toString());		
 	}
 	private void btnStart_clic() {
-		
-		this.frmArene = new Arene();
-		this.frmArene.setVisible(true);
-		this.dispose();
-		
+		this.controle.evenementEntreeJeu(SERVEUR);		
 	}
 
 	/**
@@ -45,8 +41,9 @@ public class EntreeJeu extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param controle 
 	 */
-	public EntreeJeu() {
+	public EntreeJeu(Controle controle) {
 		setTitle("Urban Marginal");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,6 +96,8 @@ public class EntreeJeu extends JFrame {
 		});
 		btnExit.setBounds(194, 92, 84, 20);
 		contentPane.add(btnExit);
+		
+		this.controle = controle;
 
 	}
 
