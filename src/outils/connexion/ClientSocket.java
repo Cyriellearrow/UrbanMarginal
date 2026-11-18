@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  */
 public class ClientSocket {
-
+	
 	/**
 	 * Constructeur : crée le socket de type client pour se connecter à un serveur (avec son ip et port d'écoute)
 	 * @param delegate instance de la classe vers laquelle il faut transférer les réponses
@@ -34,5 +34,5 @@ public class ClientSocket {
 			JOptionPane.showMessageDialog(null, "IP incorrecte");
 		}
 	}
-
+	
 }

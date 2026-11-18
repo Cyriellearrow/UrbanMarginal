@@ -1,9 +1,9 @@
 package outils.son;
 
+import java.io.File;
+import outils.son.exceptions.*;
 import java.io.Serializable;
 import java.net.URL;
-
-import outils.son.exceptions.SonException;
 
 /**
  * Gestion des sons
@@ -15,12 +15,12 @@ import outils.son.exceptions.SonException;
 public class Son implements Serializable {
 
 	/**
-	 * son qui peut ï¿½tre jouï¿½
+	 * son qui peut être joué
 	 */
     private Sound sound ;
 
     /**
-     * Crï¿½ation d'un objet de type Sound, ï¿½ partir d'un fichier de son
+     * Création d'un objet de type Sound, à partir d'un fichier de son
      * @param nomfic url du fichier
      */
     public Son (URL nomfic) {
@@ -39,7 +39,7 @@ public class Son implements Serializable {
     }
 
     /**
-     * ferme le son (libï¿½re l'objet de la mï¿½moire)
+     * ferme le son (libère l'objet de la mémoire)
      */
     public void close() {
         this.sound.fermer();

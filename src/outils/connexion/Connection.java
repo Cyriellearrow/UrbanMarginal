@@ -11,7 +11,7 @@ import java.net.Socket;
  *
  */
 public class Connection extends Thread {
-
+	
 	/**
 	 * canal d'entrée
 	 */
@@ -19,7 +19,7 @@ public class Connection extends Thread {
 	/**
 	 * canal de sortie
 	 */
-	private ObjectOutputStream out ;
+	private ObjectOutputStream out ; 
 	/**
 	 * objet de lien avec une autre classe qui implémente AsyncResponse pour transférer les réponses
 	 */
@@ -51,7 +51,7 @@ public class Connection extends Thread {
 		// envoi de l'instance de connexion vers la classe qui implémente AsyncResponse pour récupérer la réponse
 		this.delegate.reception(this, "connexion", null);
 	}
-
+	
 	/**
 	 * Envoi d'un objet vers l'ordinateur distant, sur le canal de sortie
 	 * @param unObjet contieny l'objet à envoyer
@@ -68,11 +68,10 @@ public class Connection extends Thread {
 			}
 		}
 	}
-
+	
 	/**
 	 * Méthode thread qui permet d'attendre des messages provenant de l'ordi distant
 	 */
-	@Override
 	public void run() {
 		// permet de savoir s'il faut continuer à écouter
 		boolean inOk = true ;
@@ -104,7 +103,7 @@ public class Connection extends Thread {
 				}
 			}
 		}
-
+		
 	}
-
+	
 }
