@@ -14,12 +14,12 @@ public class ServeurSocket extends Thread {
 	/**
 	 * objet pour une connexion de type serveur (pour attendre des connexions de clients)
 	 */
-	private ServerSocket serverSocket ; 
+	private ServerSocket serverSocket ;
 	/**
 	 * objet de lien avec une autre classe qui implémente AsyncResponse pour transférer les réponses
 	 */
-	private AsyncResponse delegate=null; 
-	
+	private AsyncResponse delegate=null;
+
 	/**
 	 * Constructeur
 	 * @param delegate instance de la classe vers laquelle il faut transférer les réponses
@@ -32,7 +32,7 @@ public class ServeurSocket extends Thread {
 			this.serverSocket = new ServerSocket(port);
 			// le démarrage de l'écoute ne peut se faire que si un objet delegate existe (pour récupérer la réponse)
 			if(delegate != null) {
-				this.start();		
+				this.start();
 			}
 		} catch (IOException e) {
 			// probl�me grave qui ne devrait pas se produire : arr�t du programme
@@ -40,10 +40,11 @@ public class ServeurSocket extends Thread {
 			System.exit(0);
 		}
 	}
-	
+
 	/**
 	 * M�thode thread qui va attendre la connexion d'un client
 	 */
+	@Override
 	public void run() {
 		// objet qui va r�cup�rer le socket du client qui s'est connect�
 		Socket socket ;
@@ -63,5 +64,5 @@ public class ServeurSocket extends Thread {
 			}
 		}
 	}
-	
+
 }

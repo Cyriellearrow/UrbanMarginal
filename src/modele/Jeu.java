@@ -8,28 +8,28 @@ import outils.connexion.Connection;
  *
  */
 public abstract class Jeu {
-	
+
 	protected Controle controle;
-	
-	
+
+
 
 	/**
 	 * Réception d'une connexion (pour communiquer avec un ordinateur distant)
 	 */
 	public abstract void connexion(Connection connection) ;
-	
+
 	/**
 	 * Réception d'une information provenant de l'ordinateur distant
-	 * @param info 
-	 * @param connection 
+	 * @param info
+	 * @param connection
 	 */
 	public abstract void reception(Connection connection, Object info) ;
-	
+
 	/**
 	 * Déconnexion de l'ordinateur distant
 	 */
 	public abstract void deconnexion() ;
-	
+
 	/**
 	 * Envoi d'une information vers un ordinateur distant
 	 */
@@ -39,7 +39,7 @@ public abstract class Jeu {
 
 	public void reception() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }

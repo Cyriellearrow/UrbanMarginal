@@ -19,8 +19,20 @@ public interface Global {
 	// ----- Chemins vers les fichiers du dossier media -----
 	String CHEMIN = "media/";
 	String CHEMINFONDS = CHEMIN + "fonds/";
-	String CHEMINMURS = CHEMIN + "murs/";
 	String CHEMINPERSONNAGES = CHEMIN + "personnages/";
 	String CHEMINBOULES = CHEMIN + "boules/";
 	String CHEMINSONS = CHEMIN + "sons/";
+
+	//----Les Murs ----
+	int HAUTEURARENE = 600;
+	int LARGEURARENE = 800;
+	int HAUTEURMUR = 35;
+	int LARGEURMUR = 34;
+	String CHEMINSEPARATOR = "/";
+	String CHEMINMURS = "murs"+CHEMINSEPARATOR;
+	String MUR = CHEMINMURS+"mur.gif";
+	int NBMURS=20;
+	String AJOUTMUR = "ajout mur";
+	String AJOUTPANELMURS = "ajout panel murs";
+
 }

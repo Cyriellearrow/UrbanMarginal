@@ -1,4 +1,5 @@
 package modele;
+import javax.swing.JLabel;
 
 /**
  * Informations communes � tous les objets (joueurs, murs, boules)
@@ -15,7 +16,13 @@ public abstract class Objet {
 	 * position Y de l'objet
 	 */
 	protected Integer posY ;
-	
+
+	protected JLabel jLabel;
+
+	public JLabel getJLabel() {
+		return jLabel;
+	}
+
 	/**
 	 * contr�le si l'objet actuel touche l'objet pass� en param�tre
 	 * @param objet contient l'objet � contr�ler
@@ -24,5 +31,5 @@ public abstract class Objet {
 	public Boolean toucheObjet (Objet objet) {
 		return null;
 	}
-	
+
 }

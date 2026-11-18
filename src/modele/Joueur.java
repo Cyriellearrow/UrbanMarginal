@@ -13,12 +13,12 @@ public class Joueur extends Objet {
 	/**
 	 * gain de points de vie lors d'une attaque
 	 */
-	private static final int GAIN = 1 ; 
+	private static final int GAIN = 1 ;
 	/**
 	 * perte de points de vie lors d'une attaque
 	 */
-	private static final int PERTE = 2 ; 
-	
+	private static final int PERTE = 2 ;
+
 	/**
 	 * pseudo saisi
 	 */
@@ -26,7 +26,7 @@ public class Joueur extends Objet {
 	/**
 	 * n° correspondant au personnage (avatar) pour le fichier correspondant
 	 */
-	private int numPerso ; 
+	private int numPerso ;
 	/**
 	 * instance de JeuServeur pour communiquer avec lui
 	 */
@@ -42,12 +42,12 @@ public class Joueur extends Objet {
 	/**
 	* vie restante du joueur
 	*/
-	private int vie ; 
+	private int vie ;
 	/**
 	* tourné vers la gauche (0) ou vers la droite (1)
 	*/
 	private int orientation ;
-	
+
 	/**
 	 * Constructeur
 	 */
@@ -68,7 +68,7 @@ public class Joueur extends Objet {
 	 */
 	private void premierePosition() {
 	}
-	
+
 	/**
 	 * Affiche le personnage et son message
 	 */
@@ -84,7 +84,7 @@ public class Joueur extends Objet {
 	/**
 	 * Gère le déplacement du personnage
 	 */
-	private void deplace() { 
+	private void deplace() {
 	}
 
 	/**
@@ -100,13 +100,13 @@ public class Joueur extends Objet {
 	 */
 	public void gainVie() {
 	}
-	
+
 	/**
-	 * Perte de points de vie après avoir été touché 
+	 * Perte de points de vie après avoir été touché
 	 */
 	public void perteVie() {
 	}
-	
+
 	/**
 	* Contrôle si le joueur touche un des murs
 	* @return true si un joueur touche un mur
@@ -114,7 +114,7 @@ public class Joueur extends Objet {
 	private Boolean toucheMur() {
 		return null;
 	}
-	
+
 	/**
 	 * vrai si la vie est à 0
 	 * @return true si vie = 0
@@ -122,11 +122,11 @@ public class Joueur extends Objet {
 	public Boolean estMort() {
 		return null;
 	}
-	
+
 	/**
 	 * Le joueur se déconnecte et disparait
 	 */
 	public void departJoueur() {
 	}
-	
+
 }

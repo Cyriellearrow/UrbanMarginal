@@ -1,5 +1,7 @@
 package modele;
 
+import javax.swing.JPanel;
+
 import Controleur.Controle;
 import Controleur.Global;
 import outils.connexion.Connection;
@@ -9,17 +11,16 @@ import outils.connexion.Connection;
  *
  */
 public class JeuClient extends Jeu implements Global {
-	
-	private Controle controle;
+
 	private Connection connectionServeur;
-	
+
 	/**
 	 * Controleur
 	 */
 	public JeuClient(Controle controle) {
 		super.controle = controle;
 	}
-	
+
 	@Override
 	public void connexion(Connection connection) {
 		this.connectionServeur = connection;
@@ -27,8 +28,11 @@ public class JeuClient extends Jeu implements Global {
 
 	@Override
 	public void reception(Connection connection, Object info) {
+		if (info instanceof JPanel) {
+			this.controle.evenementJeuClient(AJOUTPANELMURS, info);
+		}
 	}
-	
+
 	@Override
 	public void deconnexion() {
 	}

@@ -1,11 +1,13 @@
 package Controleur;
 
-import Vue.EntreeJeu;
+import javax.swing.JPanel;
+
 import Vue.Arene;
 import Vue.ChoixJoueur;
+import Vue.EntreeJeu;
 import modele.Jeu;
-import modele.JeuServeur;
 import modele.JeuClient;
+import modele.JeuServeur;
 import outils.connexion.AsyncResponse;
 import outils.connexion.ClientSocket;
 import outils.connexion.Connection;
@@ -27,7 +29,7 @@ public class Controle implements AsyncResponse, Global{
 		this.frmEntreeJeu = new EntreeJeu(this);
 		this.frmEntreeJeu.setVisible(true);
 	}
-	
+
 	/**
 	 * Gère les demandes provenant de ChoixJoueur
 	 * @param pseudo
@@ -38,7 +40,7 @@ public class Controle implements AsyncResponse, Global{
 		this.frmArene.setVisible(true);
 		((JeuClient)this.leJeu).envoi(PSEUDO + SEPARATOR + pseudo + SEPARATOR + numPerso);
 	}
-	
+
 	/**
 	 * Envoi d'une information vers l'ordinateur distant
 	 * @param connection
@@ -47,7 +49,7 @@ public class Controle implements AsyncResponse, Global{
 	public void envoi(Connection connection,Object info) {
 		connection.envoi(info);
 	}
-	
+
 	/**
 	 * Gèe les demandes provenant de EntreeJeu
 	 * @param info
@@ -59,17 +61,29 @@ public class Controle implements AsyncResponse, Global{
 			this.leJeu = new JeuServeur(this);
 			this.frmEntreeJeu.dispose();
 			this.frmArene =  new Arene();
+			((JeuServeur)leJeu).constructionMurs();
 			this.frmArene.setVisible(true);
-			
+
 		}
 		else {
 			this.typeJeu = CLIENT;
 			new ClientSocket(this,info,PORT);
 		}
-		
-		
+
+
 	}
-	
+
+	public void evenementJeuServeur(String ordre, Object info) {
+		switch (ordre) {
+			case AJOUTMUR:
+				this.frmArene.ajoutMurs(info);
+				break;
+			case AJOUTPANELMURS:
+				this.leJeu.envoi((Connection) info,this.frmArene.getJpnMurs());
+
+		}
+		}
+
 
 	/**
 	 * Méthode d'entrée dans l'application
@@ -102,9 +116,18 @@ public class Controle implements AsyncResponse, Global{
 			case DECONNEXION:
 					break;
 		}
+
+	}
+
+	public void evenementJeuClient(String ordre, Object info) {
+		switch (ordre) {
+			case AJOUTPANELMURS:
+				this.frmArene.setJpnMurs((JPanel) info);
+				break;
+	}
 		
 	}
-	
-	
+
+
 
 }
